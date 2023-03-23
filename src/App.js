@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import styled from 'styled-components';
+import Logo from './components/Logo';
+import Buttons from './components/Buttons';
+import AllPokemon from './pages/AllPokemon';
+import SearchPokemon from './pages/SearchPokemon';
+
+const AppContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial;
+`
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <AppContainer>
+          <Logo />
+          <Buttons />
+          <Routes>
+            <Route path="/all_pokemon" element={<AllPokemon />}></Route>
+            <Route path="/search_pokemon" element={<SearchPokemon />}></Route>
+          </Routes>
+        </AppContainer>
+    </BrowserRouter>
   );
 }
 
